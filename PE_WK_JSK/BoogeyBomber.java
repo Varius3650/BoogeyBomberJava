@@ -64,7 +64,6 @@ public class BoogeyBomber extends AdvancedRobot
 		if(getRadarHeading() >180) {
 			b = java.lang.Math.abs(b);
 		}
-		double[] coordinates = new double[2];
 		return new Coordinates(b + getX(), a + getY());
 	}
 	
