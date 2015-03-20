@@ -2,6 +2,7 @@ package PE_WK_JSK;
 
 import robocode.*;
 import robocode.util.Utils;
+import PE_WK_JSK.Coordinates;
 
 public class BoogeyBomber extends AdvancedRobot
 {
@@ -29,7 +30,7 @@ public class BoogeyBomber extends AdvancedRobot
 	
 	void getTurnDirection(Coordinates enemyCoordinates, ScannedRobotEvent e)
 	{
-		double enemyAngle = java.lang.Math.asin(e.getDistance() / (enemyCoordinates.x - this.X));
+		double enemyAngle = java.lang.Math.asin(e.getDistance() / (enemyCoordinates.x - getX()));
 		double relativeAngle = java.lang.Math.abs(getGunHeading() - enemyAngle);
 		if (relativeAngle > 180) {
 			if ((e.getHeading() > 180 && getGunHeading() > 180) || (e.getHeading() < 180 && getGunHeading() < 180)) {
