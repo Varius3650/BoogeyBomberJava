@@ -8,12 +8,16 @@ public class BoogeyBomber extends AdvancedRobot
 {
 	private static final int dist = 50;
 
-	public static final int COORDINATES = 200;
+	public static final int COORDINATES = 2000;
 	double radarFactor = 2;
+	boolean spottedEnemy = false;
 	
-	public void Run()
+	public void run()
 	{
 		while (true) {
+			if (!spottedEnemy) {
+				setTurnRadarLeft(180);
+			}
 			scan();
 			move();
 			execute();
@@ -24,7 +28,7 @@ public class BoogeyBomber extends AdvancedRobot
 	{
 		if(e.getDistance() <= COORDINATES) {
 			Coordinates coordinates = getCurrentCoordinates(e);
-			this.getTurnDirection(coordinates, e);
+			getTurnDirection(coordinates, e);
 		}
 	}
 	
@@ -124,9 +128,10 @@ public class BoogeyBomber extends AdvancedRobot
 		return false;
 	}
 	
-	public void OnScannedRobot(ScannedRobotEvent e)
+	public void onScannedRobot(ScannedRobotEvent e)
 	{
-		pointGun(e);
+		spottedEnemy = true;
+//		pointGun(e);
 		setFire(1);
 		double radarTurn = getHeadingRadians() + e.getBearingRadians() - getRadarHeadingRadians();
 		setTurnRadarRightRadians(radarFactor * Utils.normalRelativeAngle(radarTurn));
@@ -134,7 +139,7 @@ public class BoogeyBomber extends AdvancedRobot
 		saveOnScannedRobot(e);
 	}
 	
-	public void OnHitRobot(HitRobotEvent e)
+	public void onHitRobot(HitRobotEvent e)
 	{
 		double turnGunAmt = Utils.normalRelativeAngleDegrees(e.getBearing() + getHeading() - getGunHeading());
 		setTurnGunRight(turnGunAmt);
