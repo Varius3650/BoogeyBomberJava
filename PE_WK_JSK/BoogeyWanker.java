@@ -29,10 +29,7 @@ public class Wanker extends AdvancedRobot
     @Override
     public void run()
     {
-        setBodyColor(Color.blue);
-        setGunColor(Color.blue);
-        setRadarColor(Color.black);
-        setScanColor(Color.yellow);
+        
         setAdjustGunForRobotTurn(true);
         setAdjustRadarForGunTurn(true);
 
