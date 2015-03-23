@@ -43,11 +43,11 @@ public class Wanker extends AdvancedRobot
 	public void setEnergyColorBlinking(){
 		if(getEnergy()%2== 0){
 		 	setRadarColor(new Color (227, 200, 0));	
-		 	setBulletColor(new Color (227, 200,0));
+		 	setScanColor(new Color (227, 200,0));
 		 	}
 		else{
 			setRadarColor(new Color(0, 0, 0));
-			setBulletColor(new Color (0, 0,0));
+			setScanColor(new Color (0, 0,0));
 		}
 	}
 	public void setEnergyChangeColor()
@@ -55,7 +55,7 @@ public class Wanker extends AdvancedRobot
 		 getEnergy();
 		// setBulletColor(new Color (0, 0,0));
 		 setGunColor(new Color(100, 118, 135));
-		 setScanColor(new Color(109, 135, 100));
+		 setBulletColor(new Color(109, 135, 100));
 		    if(getEnergy()>=62){
 		    	
 		        
